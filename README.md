@@ -1,8 +1,8 @@
-# Audio to Text Transcription Project
+# Speech-to-Text (STT) Model Project
 
 ## Project Overview
 
-This project demonstrates speech-to-text transcription capabilities using open-source models. The audio file has been trimmed from 00:13:50 to 00:18:00 (4 minutes 10 seconds) and converted from M4A to WAV format for optimal processing.
+This project provides a complete speech-to-text transcription solution using OpenAI's Whisper model. It includes automated environment setup, dependency management, and produces high-quality transcripts with precise timestamps. The project is designed to be user-friendly with both automatic and manual setup options.
 
 ## Model and Technology Used
 
@@ -15,17 +15,19 @@ This project demonstrates speech-to-text transcription capabilities using open-s
 
 ### Technical Specifications
 - **Framework**: PyTorch
-- **Audio Format**: WAV (converted from M4A)
-- **Duration**: 4 minutes 10 seconds (trimmed segment)
-- **Timestamp Format**: [MM:SS] as per requirements
+- **Audio Format**: WAV
+- **Timestamp Format**: [MM:SS] format
+- **Model Size**: Base model (balanced speed and accuracy)
 
 ## Features
 
--  Converts WAV audio files to text with high accuracy
--  Includes precise timestamps in [MM:SS] format
--  Uses OpenAI Whisper Base model (free, open-source)
--  Outputs structured transcript following required format
--  Automated environment setup and dependency management
+- **High-Quality Transcription**: Converts WAV audio files to text with high accuracy using OpenAI Whisper
+- **Precise Timestamps**: Includes timestamps in [MM:SS] format for each speech segment
+- **Automated Setup**: One-command environment setup with `setup_environment.py`
+- **User-Friendly Interface**: Interactive console with progress indicators and error handling
+- **Automatic Dependency Installation**: Installs Whisper automatically if not found
+- **Structured Output**: Generates well-formatted transcript files with metadata
+- **Cross-Platform**: Works on Windows, macOS, and Linux
 
 ## Setup Instructions
 
@@ -54,11 +56,25 @@ python setup_environment.py
 ## Usage
 
 1. Ensure your WAV audio file is in the project directory
-2. Update the `audio_file` variable in `audio_to_text.py` with your filename
+2. Update the `audio_file` variable in `AudioToText.py` with your filename (default: `GMT20250919-031940_Recording.wav`)
 3. Run the transcription:
    ```bash
-   python audio_to_text.py
+   python AudioToText.py
    ```
+
+### Example Output
+The script will display progress information and save the transcript to `transcript.txt`:
+```
+============================================================
+AUDIO TO TEXT CONVERTER
+============================================================
+Audio file: GMT20250919-031940_Recording.wav
+Loading Whisper model...
+Starting transcription...
+Transcription completed!
+Saving transcript to: transcript.txt
+Transcript saved successfully!
+```
 
 ## Output Format
 
@@ -91,25 +107,39 @@ The transcript follows the exact required format:
 ## File Structure
 
 ```
-├── audio_to_text.py          # Main transcription script
-├── setup_environment.py      # Environment setup automation
-├── requirements.txt          # Python dependencies
-├── README.md                # This documentation
-├── GMT20250919-031940_Recording.wav  # Input audio file
-└── transcript.txt           # Output transcript
+├── AudioToText.py                    # Main transcription script
+├── setup_environment.py              # Environment setup automation
+├── requirements.txt                  # Python dependencies
+├── README.md                        # This documentation
+├── GMT20250919-031940_Recording.wav # Input audio file (WAV format)
+├── transcript.txt                   # Output transcript
+└── venv/                           # Virtual environment (created by setup)
+    ├── Scripts/                    # Windows activation scripts
+    ├── Lib/                        # Python packages
+    └── pyvenv.cfg                  # Virtual environment config
 ```
 
 ## Results
 
-The transcription successfully processed the 4-minute 10-second audio segment, producing a well-structured transcript with accurate timestamps. The output demonstrates the model's capability to handle conversational speech with proper punctuation and sentence structure.
+The transcription successfully processed the audio file, producing a well-structured transcript with accurate timestamps. The output demonstrates the model's capability to handle conversational speech, including:
 
-## Compliance with Guidelines
+- **Professional Presentation**: Clear transcription of business storytelling lecture content
+- **Interactive Elements**: Captured audience participation and Q&A sessions
+- **Accurate Timestamps**: Precise timing for each speech segment
+- **Natural Language Processing**: Proper punctuation and sentence structure
+- **Multi-speaker Recognition**: Handles different speakers and conversation flow
 
- **Open Source Model**: OpenAI Whisper with proper GitHub repository citation  
- **Cost Transparency**: Clearly stated as FREE (open source)  
- **Audio Length**: Limited to 4 minutes 10 seconds (within reasonable processing limits)  
- **Output Format**: Exact [Timestamp] Sentence format as required  
- **Accuracy Focus**: High-quality transcription with proper structure  
+The transcript shows a business storytelling class session with instructor Saurabh Arora from Waterfield Advisors, demonstrating the model's effectiveness for educational and professional content.
+
+## Key Benefits
+
+- **Open Source Model**: OpenAI Whisper with proper GitHub repository citation
+- **Cost Transparency**: Completely FREE (open source, no API costs)
+- **High Accuracy**: Professional-grade transcription quality
+- **User-Friendly**: Automated setup and intuitive interface
+- **Flexible Input**: Supports various audio formats (WAV recommended)
+- **Structured Output**: Clean, timestamped transcript format
+- **Cross-Platform**: Works on Windows, macOS, and Linux  
 
 ## References
 
