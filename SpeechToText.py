@@ -29,7 +29,6 @@ def calculate_speech_flow_similarity(segment1, segment2):
     if not text1 or not text2:
         return 0.0
     
-    # Check for continuation patterns
     continuation_patterns = [
         ("so", "you", "know"),
         ("that", "you", "know"),
@@ -43,12 +42,10 @@ def calculate_speech_flow_similarity(segment1, segment2):
         ("moreover",),
     ]
     
-    # Check if segments contain continuation patterns
     for pattern in continuation_patterns:
         if all(word in text1 for word in pattern) or all(word in text2 for word in pattern):
-            return 0.8  # High similarity for continuation patterns
+            return 0.8
     
-    # Calculate word overlap
     words1 = set(text1.split())
     words2 = set(text2.split())
     
@@ -62,29 +59,24 @@ def calculate_speech_flow_similarity(segment1, segment2):
 
 def is_speech_continuation(segment1, segment2, silence_gap=2.0):
     """Determine if two segments are part of the same speech flow"""
-    # Very short silence = definitely continuation
     if silence_gap <= 0.5:
         return True
     
-    # Long silence = different speech
     if silence_gap > 5.0:
         return False
     
-    # Check for incomplete sentences in first segment
     text1 = segment1["text"].strip()
     incomplete_endings = ["...", "so", "and", "but", "or", "that", "which", "who", "where", "when", "why", "how"]
     
     if any(text1.lower().endswith(ending) for ending in incomplete_endings):
         return True
     
-    # Check for sentence starters in second segment
     text2 = segment2["text"].strip()
     sentence_starters = ["so", "and", "but", "or", "that", "which", "who", "where", "when", "why", "how", "it", "this", "that", "there"]
     
     if any(text2.lower().startswith(starter) for starter in sentence_starters):
         return True
     
-    # Check similarity
     similarity = calculate_speech_flow_similarity(segment1, segment2)
     return similarity > 0.3 and silence_gap <= 3.0
 
@@ -95,7 +87,6 @@ def is_repetitive_text(text):
     
     text_lower = text.lower().strip()
     
-    # Check for specific repetitive patterns
     repetitive_patterns = [
         "i don't know",
         "hello hello",
@@ -110,12 +101,10 @@ def is_repetitive_text(text):
         if pattern in text_lower and text_lower.count(pattern) > 2:
             return True
     
-    # Check for excessive repetition of single phrases
     words = text_lower.split()
     if len(words) > 3:
-        # Count unique words vs total words
         unique_words = len(set(words))
-        if unique_words < len(words) * 0.3:  # Less than 30% unique words
+        if unique_words < len(words) * 0.3:
             return True
     
     return False
@@ -127,7 +116,6 @@ def clean_repetitive_text(text):
     
     import re
     
-    # Remove excessive repetitions of common phrases
     repetitive_patterns = [
         (r'\b(i don\'t know\s*){3,}', 'I don\'t know'),
         (r'\b(hello\s*){3,}', 'Hello'),
@@ -142,7 +130,6 @@ def clean_repetitive_text(text):
     for pattern, replacement in repetitive_patterns:
         cleaned_text = re.sub(pattern, replacement, cleaned_text, flags=re.IGNORECASE)
     
-    # Remove excessive spaces
     cleaned_text = re.sub(r'\s+', ' ', cleaned_text).strip()
     
     return cleaned_text
@@ -159,41 +146,25 @@ def intelligent_chunking(segments, max_chunk_duration=30):
         current_segment = segments[i]
         previous_segment = segments[i-1]
         
-        # Calculate silence gap
         silence_gap = current_segment["start"] - previous_segment["end"]
-        
-        # Calculate current chunk duration
         chunk_duration = current_segment["end"] - current_chunk[0]["start"]
-        
-        # Check if current segment is repetitive
         is_repetitive = is_repetitive_text(current_segment["text"])
-        
-        # Check if this is a continuation of the same speech flow
         is_continuation = is_speech_continuation(previous_segment, current_segment, silence_gap)
         
-        # Don't merge if current segment is repetitive and different from previous
         if is_repetitive and not is_repetitive_text(previous_segment["text"]):
-            # Save current chunk and start new one
             chunks.append(merge_segments(current_chunk))
             current_chunk = [current_segment]
             continue
         
-        # Merge conditions:
-        # 1. Short silence gap (less than 2s)
-        # 2. Chunk not too long (less than max duration)
-        # 3. Speech flow continuation
-        # 4. Not mixing repetitive and non-repetitive text
         if (silence_gap <= 2.0 and 
             chunk_duration <= max_chunk_duration and
             is_continuation and
             not (is_repetitive and not is_repetitive_text(previous_segment["text"]))):
             current_chunk.append(current_segment)
         else:
-            # Save current chunk and start new one
             chunks.append(merge_segments(current_chunk))
             current_chunk = [current_segment]
     
-    # Add the last chunk
     if current_chunk:
         chunks.append(merge_segments(current_chunk))
     
@@ -207,10 +178,7 @@ def merge_segments(segments):
     if len(segments) == 1:
         return segments[0]
     
-    # Combine text with proper spacing
     combined_text = " ".join(segment["text"].strip() for segment in segments if segment["text"].strip())
-    
-    # Clean up repetitive text
     cleaned_text = clean_repetitive_text(combined_text)
     
     return {
@@ -460,7 +428,6 @@ def detect_unclear_audio(segments):
         if is_repetitive_text(segment["text"]):
             repetitive_count += 1
     
-    # If more than 50% of segments are repetitive, audio is likely unclear
     return repetitive_count / total_segments > 0.5
 
 def process_entire_file(audio_file):

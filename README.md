@@ -2,12 +2,12 @@
 
 ## Project Overview
 
-This project provides a comprehensive speech-to-text transcription solution using OpenAI's Whisper model with advanced audio processing and audience detection capabilities. The entire functionality is contained in a single, easy-to-use script that handles audio preprocessing, speaker diarization, and audience participation detection.
+This project provides a comprehensive speech-to-text transcription solution using OpenAI's Whisper model with intelligent chunking and advanced audio processing. The system automatically groups sentences spoken in one flow for natural conversation flow and handles unclear audio with smart repetitive text detection and cleaning.
 
 ## Model and Technology Used
 
 ### OpenAI Whisper (Open Source)
-- **Model**: Whisper Base
+- **Model**: Whisper Large-v3 (with Base fallback)
 - **Repository**: https://github.com/openai/whisper
 - **Cost**: **FREE** (Open Source)
 - **License**: MIT License
@@ -15,24 +15,23 @@ This project provides a comprehensive speech-to-text transcription solution usin
 
 ### Technical Specifications
 - **Framework**: PyTorch
-- **Audio Format**: WAV
+- **Audio Format**: WAV, MP3, M4A, FLAC
 - **Timestamp Format**: [MM:SS] format
-- **Model Size**: Base model (balanced speed and accuracy)
+- **Model Size**: Large-v3 (high accuracy) with Base fallback
 
 ## Features
 
 - **Single Script Solution**: All functionality in one easy-to-use script
 - **Intelligent Chunking**: Groups sentences spoken in one flow for natural conversation flow
+- **Repetitive Text Cleaning**: Automatically detects and cleans unclear audio patterns
+- **Audio Quality Detection**: Warns users about unclear audio and suggests improvements
 - **High-Quality Transcription**: Converts audio files to text with high accuracy using OpenAI Whisper
 - **Precise Timestamps**: Includes timestamps in [MM:SS] format for each speech segment
 - **Audio Denoising**: Advanced noise reduction using multiple algorithms
 - **Speaker Diarization**: Automatic detection and separation of different speakers
 - **Audience Detection**: Specifically identifies audience participation and questions
 - **Audio Enhancement**: Preprocessing with filtering, normalization, and compression
-- **Speaker Analysis**: Analyzes speaker changes and audience participation (internal processing)
 - **Enhanced Model**: Uses Whisper Large-v3 with automatic fallback to base model
-- **Intelligent Segmentation**: Audio segmentation based on speaker changes
-- **Custom Time Range**: Process specific time segments of audio files
 - **User-Friendly Interface**: Interactive file selection and progress indicators
 - **Cross-Platform**: Works on Windows, macOS, and Linux
 - **Multiple Audio Formats**: Supports WAV, MP3, M4A, and FLAC files
@@ -77,12 +76,29 @@ This project provides a comprehensive speech-to-text transcription solution usin
 3. Select your audio file from the interactive menu
 4. The script will automatically process the entire audio file with intelligent chunking and generate `enhanced_transcript.txt`
 
+### Intelligent Chunking Example
+The enhanced transcript uses intelligent chunking to group related speech segments:
+
+**Before Intelligent Chunking:**
+```
+[01:17] So you know I…
+[01:19] It was a very ambitious kind of an ad.
+[01:21] So in that way I connected with it.
+[01:24] That you know it was a very good way to you know linking your brand with the other brand and
+[01:27] showing your superiority.
+```
+
+**After Intelligent Chunking:**
+```
+[01:17] So you know I… It was a very ambitious kind of an ad. So in that way I connected with it. That you know it was a very good way to you know linking your brand with the other brand and showing your superiority.
+```
+
 ### Example Output
 The script will display progress information and save the transcript:
 ```
 ============================================================
 ENHANCED SPEECH-TO-TEXT CONVERTER
-With Audience Detection & Audio Enhancement
+With Intelligent Chunking & Audio Enhancement
 ============================================================
 
 Available audio files in current directory:
