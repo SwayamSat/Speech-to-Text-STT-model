@@ -22,6 +22,7 @@ This project provides a comprehensive speech-to-text transcription solution usin
 ## Features
 
 - **Single Script Solution**: All functionality in one easy-to-use script
+- **Intelligent Chunking**: Groups sentences spoken in one flow for natural conversation flow
 - **High-Quality Transcription**: Converts audio files to text with high accuracy using OpenAI Whisper
 - **Precise Timestamps**: Includes timestamps in [MM:SS] format for each speech segment
 - **Audio Denoising**: Advanced noise reduction using multiple algorithms
@@ -31,6 +32,7 @@ This project provides a comprehensive speech-to-text transcription solution usin
 - **Speaker Analysis**: Analyzes speaker changes and audience participation (internal processing)
 - **Enhanced Model**: Uses Whisper Large-v3 with automatic fallback to base model
 - **Intelligent Segmentation**: Audio segmentation based on speaker changes
+- **Custom Time Range**: Process specific time segments of audio files
 - **User-Friendly Interface**: Interactive file selection and progress indicators
 - **Cross-Platform**: Works on Windows, macOS, and Linux
 - **Multiple Audio Formats**: Supports WAV, MP3, M4A, and FLAC files
@@ -73,7 +75,7 @@ This project provides a comprehensive speech-to-text transcription solution usin
    python SpeechToText.py
    ```
 3. Select your audio file from the interactive menu
-4. The script will automatically process the audio and generate `enhanced_transcript.txt`
+4. The script will automatically process the entire audio file with intelligent chunking and generate `enhanced_transcript.txt`
 
 ### Example Output
 The script will display progress information and save the transcript:
@@ -112,7 +114,24 @@ Enhanced transcript saved successfully!
 
 ## Output Format
 
-The enhanced transcript follows the standard format with timestamps:
+### Smart Chunking Example
+The enhanced transcript uses smart chunking to group related speech segments:
+
+**Before Smart Chunking:**
+```
+[01:17] So you know I…
+[01:19] It was a very ambitious kind of an ad.
+[01:21] So in that way I connected with it.
+[01:24] That you know it was a very good way to you know linking your brand with the other brand and
+[01:27] showing your superiority.
+```
+
+**After Smart Chunking:**
+```
+[01:17] So you know I… It was a very ambitious kind of an ad. So in that way I connected with it. That you know it was a very good way to you know linking your brand with the other brand and showing your superiority.
+```
+
+### Standard Format
 ```
 [00:00] Morning. Good morning.
 [00:03] Good morning sir.
