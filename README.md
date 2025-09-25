@@ -1,8 +1,8 @@
-# Speech-to-Text (STT) Model Project
+# Enhanced Speech-to-Text Converter
 
 ## Project Overview
 
-This project provides a complete speech-to-text transcription solution using OpenAI's Whisper model. It includes automated environment setup, dependency management, and produces high-quality transcripts with precise timestamps. The project is designed to be user-friendly with both automatic and manual setup options.
+This project provides a comprehensive speech-to-text transcription solution using OpenAI's Whisper model with advanced audio processing and audience detection capabilities. The entire functionality is contained in a single, easy-to-use script that handles audio preprocessing, speaker diarization, and audience participation detection.
 
 ## Model and Technology Used
 
@@ -21,23 +21,35 @@ This project provides a complete speech-to-text transcription solution using Ope
 
 ## Features
 
-- **High-Quality Transcription**: Converts WAV audio files to text with high accuracy using OpenAI Whisper
+- **Single Script Solution**: All functionality in one easy-to-use script
+- **High-Quality Transcription**: Converts audio files to text with high accuracy using OpenAI Whisper
 - **Precise Timestamps**: Includes timestamps in [MM:SS] format for each speech segment
-- **Automated Setup**: One-command environment setup with `setup_environment.py`
-- **User-Friendly Interface**: Interactive console with progress indicators and error handling
-- **Automatic Dependency Installation**: Installs Whisper automatically if not found
-- **Structured Output**: Generates well-formatted transcript files with metadata
+- **Audio Denoising**: Advanced noise reduction using multiple algorithms
+- **Speaker Diarization**: Automatic detection and separation of different speakers
+- **Audience Detection**: Specifically identifies audience participation and questions
+- **Audio Enhancement**: Preprocessing with filtering, normalization, and compression
+- **Speaker Analysis**: Analyzes speaker changes and audience participation (internal processing)
+- **Enhanced Model**: Uses Whisper Large-v3 with automatic fallback to base model
+- **Intelligent Segmentation**: Audio segmentation based on speaker changes
+- **User-Friendly Interface**: Interactive file selection and progress indicators
 - **Cross-Platform**: Works on Windows, macOS, and Linux
+- **Multiple Audio Formats**: Supports WAV, MP3, M4A, and FLAC files
 
 ## Setup Instructions
 
-### Option 1: Automatic Setup (Recommended)
+### Quick Setup
 
-```bash
-python setup_environment.py
-```
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### Option 2: Manual Setup
+2. Run the script:
+   ```bash
+   python SpeechToText.py
+   ```
+
+### Optional: Virtual Environment
 
 1. Create virtual environment:
    ```bash
@@ -55,35 +67,111 @@ python setup_environment.py
 
 ## Usage
 
-1. Ensure your WAV audio file is in the project directory
-2. Update the `audio_file` variable in `AudioToText.py` with your filename (default: `GMT20250919-031940_Recording.wav`)
-3. Run the transcription:
+1. Place your audio file in the project directory (supports WAV, MP3, M4A, FLAC)
+2. Run the script:
    ```bash
-   python AudioToText.py
+   python SpeechToText.py
    ```
+3. Select your audio file from the interactive menu
+4. The script will automatically process the audio and generate `enhanced_transcript.txt`
 
 ### Example Output
-The script will display progress information and save the transcript to `transcript.txt`:
+The script will display progress information and save the transcript:
 ```
 ============================================================
-AUDIO TO TEXT CONVERTER
+ENHANCED SPEECH-TO-TEXT CONVERTER
+With Audience Detection & Audio Enhancement
 ============================================================
-Audio file: GMT20250919-031940_Recording.wav
-Loading Whisper model...
-Starting transcription...
+
+Available audio files in current directory:
+1. GMT20250919-031940_Recording.wav
+2. presentation_audio.mp3
+
+Select audio file (1-2) or enter custom path: 1
+
+Processing audio file: GMT20250919-031940_Recording.wav
+Loading and preprocessing audio...
+Applying noise reduction...
+Applying high-pass filter...
+Applying dynamic range compression...
+Audio preprocessing completed!
+Analyzing audio for speaker changes...
+Detected 15 potential speaker changes
+Segmenting audio by speakers...
+Created 12 audio segments
+Detecting audience participation...
+Detected 8 audience participation segments
+Enhancing audience audio segments...
+Loading enhanced Whisper model (large-v3)...
+Starting enhanced transcription...
 Transcription completed!
-Saving transcript to: transcript.txt
-Transcript saved successfully!
+Saving enhanced transcript to: enhanced_transcript.txt
+Enhanced transcript saved successfully!
 ```
+
 
 ## Output Format
 
-The transcript follows the exact required format:
+The enhanced transcript follows the standard format with timestamps:
 ```
 [00:00] Morning. Good morning.
 [00:03] Good morning sir.
 [00:06] I would greatly appreciate if you call me Saurabh and not sir.
+[00:10] Thank you for that clarification, Saurabh.
+[00:15] Let's begin today's presentation on business storytelling.
 ```
+
+## How It Works
+
+The Speech-to-Text converter uses a sophisticated multi-stage pipeline to process audio and generate accurate transcripts:
+
+### 1. **Audio Input & Detection**
+- **File Scanning**: Automatically scans the current directory for audio files (WAV, MP3, M4A, FLAC)
+- **Interactive Selection**: Presents a numbered menu for easy file selection
+- **Format Support**: Handles multiple audio formats with automatic conversion
+
+### 2. **Audio Preprocessing Pipeline**
+- **Loading**: Uses librosa to load audio at 16kHz sample rate for optimal Whisper processing
+- **Noise Reduction**: Applies advanced noise reduction using the `noisereduce` library
+- **High-Pass Filtering**: Removes low-frequency noise (below 80Hz) using Butterworth filter
+- **Normalization**: Ensures consistent audio levels across the entire recording
+- **Dynamic Range Compression**: Applies pre-emphasis to enhance speech clarity
+
+### 3. **Speaker Analysis & Detection**
+- **Feature Extraction**: Analyzes energy, spectral centroid, and zero-crossing rate
+- **Change Point Detection**: Identifies potential speaker changes using statistical analysis
+- **Audience Detection**: Specifically looks for audience participation with lower energy thresholds
+- **Segmentation**: Creates intelligent audio segments based on speaker characteristics
+
+### 4. **Audio Enhancement**
+- **Audience-Specific Processing**: Applies special enhancements to audience segments
+- **Frequency Boosting**: Enhances high frequencies for better clarity
+- **Compression**: Applies gentle compression to audience audio
+- **Quality Optimization**: Ensures all audio segments are optimally processed
+
+### 5. **Transcription Process**
+- **Model Selection**: Uses Whisper Large-v3 for maximum accuracy with automatic fallback to base model
+- **Optimized Parameters**: Configured for better audience detection and speech recognition
+- **Context Awareness**: Uses previous text context for improved accuracy
+- **Language Specification**: Explicitly set to English for better performance
+
+### 6. **Output Generation**
+- **Chronological Ordering**: Arranges all speech segments in time sequence
+- **Timestamp Formatting**: Converts timestamps to [MM:SS] format
+- **Text Cleaning**: Removes empty segments and normalizes text
+- **File Output**: Saves to `enhanced_transcript.txt` with metadata
+
+### 7. **Error Handling & Fallbacks**
+- **Memory Management**: Automatically falls back to smaller model if memory insufficient
+- **Dependency Checking**: Validates all required libraries before processing
+- **File Validation**: Ensures audio files exist and are readable
+- **Cleanup**: Removes temporary files after processing
+
+### 8. **Performance Optimization**
+- **Parallel Processing**: Uses efficient audio processing libraries
+- **Memory Efficiency**: Processes audio in chunks to manage memory usage
+- **Caching**: Leverages Whisper's model caching for faster subsequent runs
+- **Temporary Files**: Uses temporary files to avoid memory overflow
 
 ## Technical Details
 
@@ -91,12 +179,19 @@ The transcript follows the exact required format:
 - `openai-whisper>=20231117` - Core transcription engine
 - `torch>=2.0.0` - PyTorch framework
 - `torchaudio>=2.0.0` - Audio processing
+- `librosa>=0.10.0` - Advanced audio analysis
+- `noisereduce>=3.0.0` - Noise reduction algorithms
+- `scipy>=1.10.0` - Scientific computing
+- `numpy>=1.24.0` - Numerical computing
+- `soundfile>=0.12.0` - Audio file I/O
 
 ### Model Performance
-- **Whisper Base**: Balanced speed and accuracy
-- **Processing Time**: ~2-3 minutes for 4-minute audio
-- **Accuracy**: High accuracy for clear speech
+- **Whisper Base**: Balanced speed and accuracy (original)
+- **Whisper Large-v3**: Superior accuracy for complex audio (enhanced)
+- **Processing Time**: ~2-3 minutes for 4-minute audio (base), ~5-7 minutes (large-v3)
+- **Accuracy**: High accuracy for clear speech, enhanced for audience participation
 - **Language Support**: Multi-language (English in this case)
+- **Audio Processing**: Advanced denoising, filtering, and speaker detection
 
 ## Cost Analysis
 
@@ -107,13 +202,13 @@ The transcript follows the exact required format:
 ## File Structure
 
 ```
-├── AudioToText.py                    # Main transcription script
+├── SpeechToText.py                  # Single comprehensive script
 ├── setup_environment.py              # Environment setup automation
 ├── requirements.txt                  # Python dependencies
 ├── README.md                        # This documentation
 ├── GMT20250919-031940_Recording.wav # Input audio file (WAV format)
-├── transcript.txt                   # Output transcript
-└── venv/                           # Virtual environment (created by setup)
+├── enhanced_transcript.txt          # Enhanced transcript with speaker ID
+└── venv/                           # Virtual environment (optional)
     ├── Scripts/                    # Windows activation scripts
     ├── Lib/                        # Python packages
     └── pyvenv.cfg                  # Virtual environment config

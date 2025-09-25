@@ -1,0 +1,123 @@
+ENHANCED SPEECH-TO-TEXT TRANSCRIPT
+With Audience Detection & Audio Enhancement
+============================================================
+
+Audio File: Audio clip 2.wav
+Model: OpenAI Whisper Large-v3 (Enhanced)
+Repository: https://github.com/openai/whisper
+Cost: Free (Open Source)
+Audio Processing: Denoising, Filtering, Speaker Detection
+
+TRANSCRIPT:
+--------------------
+
+[00:01] Loudly raise your hands.
+[00:03] Imperial Blue.
+[00:05] Imperial Blue. Why?
+[00:06] Men will be men.
+[00:07] Men will be men. Okay. Good.
+[00:10] What does it make you feel?
+[00:12] That men will be men.
+[00:15] Anyone else? This side of the room. Yes sir.
+[00:17] It's an older ad for Maruti Alto.
+[00:21] The song itself was very good.
+[00:23] Pundo me jaane kya naya hai.
+[00:25] That made me feel personally happy.
+[00:28] Very good. Excellent. Made you feel happy. Yes.
+[00:31] Same. An old ad. The Hero Honda ad.
+[00:34] The bike. The song.
+[00:37] Milo ka yaana na. That song.
+[00:38] Wonderful. What did it make you feel?
+[00:41] Wholesome ad.
+[00:42] Wholesome ad. Beautiful.
+[00:44] Part of life for the 5 year ad.
+[00:48] Where the kid was turning 5.
+[00:51] Excellent. What did it make you feel?
+[00:54] Happy. I guess like...
+[00:56] It's a good feeling that
+[00:57] a village is growing.
+[01:00] Beautiful. Beautiful. Thank you. Thank you all.
+[01:02] Yes sir.
+[01:03] This crazy ad where you know
+[01:07] BMW showed Mercedes logo spinning at a very fast speed.
+[01:10] When it is spinning at a very fast speed
+[01:13] their logo looks like BMW.
+[01:15] What did it make you feel?
+[01:17] So you know I...
+[01:19] It was a very ambitious kind of an ad.
+[01:21] So in that way I connected with it.
+[01:24] That you know it was a very good way to you know linking your brand with the other brand and
+[01:27] showing your superiority.
+[01:30] Brilliant. Fantastic. Thank you for sharing that.
+[01:33] Anyone else? Last chance.
+[01:35] Yes ma'am.
+[01:36] Series of Dream 11 ads.
+[01:38] Dream 11 ads.
+[01:39] It's a crossover between
+[01:40] Twitter and Bollywood actors. It's very light hearted.
+[01:42] Light hearted. Smile. Similar to this one. Right?
+[01:45] I saw all of you smile. I was looking at all of you when you were watching.
+[01:49] This is a very old ad.
+[01:50] When I was in college this was the ad.
+[01:54] And it has stayed with me for pretty much a long time.
+[01:57] Pretty much all my life.
+[01:59] Right? Ads generally give you a little bit of feeling.
+[02:02] Happiness, sadness, sorrow.
+[02:04] That helps you connect with the ad.
+[02:06] And somebody said I will not buy this scooter. Right?
+[02:09] Maybe that is a decision or an outcome that comes out of the ad.
+[02:14] Ads are essentially stories in a very short format.
+[02:17] It can be a 10 second ad. It can be a 30 second ad.
+[02:20] But they all help you connect.
+[02:24] Storytelling.
+[02:26] Storytelling.
+[02:26] True or false?
+[02:28] True.
+[02:29] True.
+[02:30] Anybody says false?
+[02:33] Anybody who doesn't like a story?
+[02:39] What about this one?
+[02:43] This is also true.
+[02:46] What's the difference?
+[02:48] Can you turn that off please laptop ma'am?
+[02:51] Unless you are expecting a call or something.
+[02:54] Thank you. Yes.
+[02:56] A good story can be subjective.
+[03:02] Every story is subjective.
+[03:06] Yeah. But we all want a good story. Right?
+[03:09] You just don't want a story. You want a good story.
+[03:12] Is this true?
+[03:13] You tell me.
+[03:16] Okay. Before we start, I have one ground rule.
+[03:21] This is being recorded. Now I am worried because I am going to say some very controversial things.
+[03:25] Okay. Anyway.
+[03:27] So I just have one rule.
+[03:28] If you guys are bored of this session, please feel free to walk out. Grab a cup of coffee. Take a break.
+[03:33] You don't need to tell me. Just do whatever you feel like.
+[03:36] You are locked in this room with me for two and a half hours.
+[03:39] The misery is all yours, not mine.
+[03:41] I apologize in advance.
+[03:43] My only one rule is don't fear the SFD.
+[03:46] What's an SFD?
+[03:48] SFD in writing balance is called a shitty first draft.
+[03:54] Okay.
+[03:54] When you start writing stories or telling stories, you will not be good at it.
+[04:00] And you'll write what is called a shitty first draft.
+[04:04] Don't fear it. Embrace it. It's yours.
+[04:07] Okay. Then you'll write a shitty second draft and a third draft.
+[04:10] And slowly you will start forming your own narratives and stories and the magic will come.
+[04:17] Storytelling is all about practice.
+[04:19] Right? It's like going to this gym.
+[04:21] When you work on a muscle, it develops over time.
+[04:23] So storytelling is also like a muscle.
+[04:26] The more you work on your storytelling, the better you will get at it.
+[04:30] Which is why do not fear the SFD.
+[04:36] There's no energy. Do not fear the SFD.
+[04:40] Excellent. Thank you.
+[04:43] Okay. So we are here to learn business storytelling.
+[04:45] Why do stories work?
+[04:47] They speak to emotion like ads.
+[04:51] Yeah.
+[04:52] They're memorable.
+[04:55] And they create what's called empathy.
+[04:57] What's empathy? Anybody knows?
