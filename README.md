@@ -203,11 +203,10 @@ The Speech-to-Text converter uses a sophisticated multi-stage pipeline to proces
 
 ```
 ├── SpeechToText.py                  # Single comprehensive script
-├── setup_environment.py              # Environment setup automation
 ├── requirements.txt                  # Python dependencies
 ├── README.md                        # This documentation
 ├── GMT20250919-031940_Recording.wav # Input audio file (WAV format)
-├── enhanced_transcript.txt          # Enhanced transcript with speaker ID
+├── enhanced_transcript.txt          # Enhanced transcript output
 └── venv/                           # Virtual environment (optional)
     ├── Scripts/                    # Windows activation scripts
     ├── Lib/                        # Python packages
